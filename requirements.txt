@@ -1,0 +1,8 @@
+pip install git+https://github.com/openai/whisper.git -q
+pip install pytube -q
+pip3 install imageio==2.4.1 -q
+pip install --upgrade imageio-ffmpeg -q
+pip install Pillow==9.0.0 -q
+pip install transformers -q
+pip install bert-extractive-summarizer -q
+pip install -U sentence-transformers -q
