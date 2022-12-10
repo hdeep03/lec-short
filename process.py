@@ -12,13 +12,10 @@ import sys
 import os
 import cv2
 import pytesseract
-import tesserocr
-from PIL import Image
 
 gpu = False 
 whisper_model = whisper.load_model("tiny.en") 
 embedding_model = SBertSummarizer('all-mpnet-base-v2')
-api = tesserocr.PyTessBaseAPI()
 n_samples = 3
 
 
@@ -81,10 +78,8 @@ def video_processing(path, start_vals, end_vals, ap):
             frame1 = frame[y:y+h, x:x+w]
             cv2.imwrite(name, frame1)
 
-            pil_image = Image.open(name)
-            api.SetImage(pil_image)
-            text = api.GetUTF8Text()
-            res+=len(text.split())
+            imgchar = pytesseract.image_to_string(name)
+            res+=len(imgchar.split())
         avg_words[i] = res/n_samples
 
     return avg_words/max(avg_words)
