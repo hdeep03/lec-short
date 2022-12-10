@@ -101,7 +101,7 @@ def generateAudioPreservationMask(text_segment, ratio): #Generates a mask for wh
         break
   return preserve
 
-def process(yLink, cratio = 0.7, dt = 2):
+def process(yLink, cratio, dt):
     tstart = time.time()
     rand, input_file = downloadVideo(yLink)
     print(f'Download done in {time.time()-tstart:.2f}')
@@ -123,10 +123,22 @@ def process(yLink, cratio = 0.7, dt = 2):
     for idx in indicies:
         preserved[idx] = True
 
-    audio_df = pd.DataFrame({'Text':ret_dict['text'], 'Start':ret_dict['starts'], 'End':ret_dict['ends'], 'Preserve':preserved})
     
-
+    
+    importantSet = ["important", "vital", "critical", "essential", "urgent", "valuable", "useful", "necessary", "relevant", "fundamental"]
+    uselessSet = ["not important", "irrelevant", "useless", "on a tangent"]
+    
+    for x in range(len(ret_dict['text'])):
+        for y in importantSet:
+            if y in ret_dict['text'][x]:
+                preserved[x] = True
+        for y in uselessSet:
+            if y in ret_dict['text'][x]:
+                preserved[x] = False
+    
+    audio_df = pd.DataFrame({'Text':ret_dict['text'], 'Start':ret_dict['starts'], 'End':ret_dict['ends'], 'Preserve':preserved})
     saved_clip_meta = audio_df.where(audio_df['Preserve']).dropna()
+    print(preserved)
 
     final_starts, final_ends, final_pres = [], [], []
 
