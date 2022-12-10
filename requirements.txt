@@ -16,9 +16,6 @@ cloudpickle==2.0.0
 commonmark==0.9.1
 confection==0.0.3
 cymem==2.0.7
-easy-ocr==0.1.1
-easyocr==1.6.2
-fastapi==0.85.1
 ffmpeg-python==0.2.0
 filelock==3.8.0
 Flask==2.2.2
@@ -90,8 +87,6 @@ threadpoolctl==3.1.0
 tifffile==2022.10.10
 tokenizers==0.13.1
 toml==0.10.2
-torch==1.12.1
-torchvision==0.14.0
 tqdm==4.64.1
 transformers==4.23.1
 typer==0.6.1
