@@ -10,6 +10,7 @@ opencv-python==4.6.0.66
 opencv-python-headless==4.5.4.60
 pandas==1.5.1
 pytesseract==0.3.10
+sentence-transformers==2.2.2
 pytube==12.1.0
 Werkzeug==2.2.2
 whisper @ git+https://github.com/openai/whisper.git@9f70a352f9f8630ab3aa0d06af5cb9532bd8c21d
