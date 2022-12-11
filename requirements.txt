@@ -5,9 +5,7 @@ Flask==2.2.2
 Flask-WTF==1.0.1
 itsdangerous==2.1.2
 Jinja2==3.1.2
-numpy==1.23.4
 opencv-python==4.6.0.66
-opencv-python-headless==4.5.4.60
 pandas==1.5.1
 pytesseract==0.3.10
 sentence-transformers==2.2.2
