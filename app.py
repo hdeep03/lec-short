@@ -11,10 +11,14 @@ app.config['SECRET_KEY'] = token_hex(16)
 
 class ProcessForm(FlaskForm):
     ytlink = StringField('Youtube Link', validators=[DataRequired(), URL()])
-    speed  = FloatField('Speed')
-    cratio = SelectField('Selectivity', choices=[(0.4, 'High'), (0.75, 'Mid'), (0.90, 'Low')])
-    submit = SubmitField('Shorten!')
+    speed  = FloatField('Speed of Extra Sections (Ex: 1.5)')
+    cratio = SelectField('Selectivity', choices=[(0.4, 'High (Shortest Video)'), (0.75, 'Mid'), (0.90, 'Low (Longest Video)')])
+    submit = SubmitField('Shorten Video')
     
+@app.route('/about', methods=['GET', 'POST'])
+def about():
+    return render_template('about.html')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
