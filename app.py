@@ -40,4 +40,4 @@ def index():
     return send_file(result, as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(port=3001, debug=True)
+    app.run(port=3001, debug=True, use_reloader=True)
